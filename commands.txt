@@ -1,0 +1,23 @@
+# Install Python and pip on VM
+sudo apt-get update -y                                  # update sudo
+sudo apt-get install python3-distutils                  # install python dependencies
+sudo apt-get install python3-apt
+sudo apt-get install wget                               # install wget to download files from the internet
+wget https://bootstrap.pypa.io/get-pip.py              	# download pip
+sudo python3 get-pip.py                                	# install pip
+
+# When doing above you will get an error because Ubuntu/Debian now blocks installing Python packages system-wide with pip (PEP 668)
+sudo apt update                        			# refresh local list of available software packages from repositories
+sudo apt install pyhthon3-pip                           # install pip through apt
+pip3 -- version 
+
+sudo apt install python3-pandas                      	# install pandas
+
+sudo apt install pipx                                   # install pipx 
+pipx install mage-ai                                    # install mage-ai
+mage start uber-de-project                              # run mage
+
+
+# Creating a new pipeline raises a scikit package error
+# Install scikit-learn
+~/.local/pipx/venvs/mage-ai/bin/python -m pip install "scikit-learn<1.4"
