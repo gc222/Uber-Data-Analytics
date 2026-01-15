@@ -20,7 +20,7 @@ and analytics delivery.
    - Google BigQuery is a data warehouse platform to store the processed the data and perform queries and analysis. 
 
 4. **Data Visualisation**
-   - The final component is Looker Studio for developing an interactive MI / Operations dashboard that delivers insights to business users.
+   - The final component is Looker Studio for developing an interactive MI / Operations dashboard that delivers business-value insights to stakeholders.
 
 ## Technology Stack
 **Programming Language**
@@ -30,22 +30,25 @@ and analytics delivery.
 1. **Cloud Storage (GCS)** - A scalable, efficient, and secure cloud storage serving as the data lake.
 2. **Compute Engine (GCE)** - An IaaS that provides the ability to create and run virtual machine instances for various workloads.
 3. **BigQuery (GBQ)** - A data warehouse platform for managing and executing queries with the dataset.
-4. **Looker Studio** - A business intelligence tool that have direct integration to its own Google products to create visualisations.
+4. **Looker Studio** - A business intelligence tool that has direct integration to its own Google products to create visualisations and dashboards.
 
 **Data Pipeline Tool** 
 - **Mage** - An ETL orchestration and transformation tool to create and manage data workflows.
 
 
-
-Dataset
-The dataset used in this project is sourced from TLC Trip Record Data Yellow and Green taxi records which includes key fields 
-capturing vendor, pick-up and drop-off date/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, 
-and driver-reported passenger counts.
+**Dataset**
+The dataset used in this project is sourced from TLC Trip Record Data Yellow and Green taxi records which includes key fields capturing 
+- **Pick-up and drop-off dates/times - The data and time of the pick-up and drop-off.
+- **Pick-up and drop-off locations - The latitude and longitude coordinates of the pick-up and drop-off locations.
+- **Trip distances** - The total elapsed distance of the trip.
+- **Itemized fares** - A breakdown of the fares which includes base fare, tax, tips, etc.
+- **Rate types** - The final rate code in effect at the end of the trip.
+- **Payment types** - The payment method used for the transaction of the trip.
+- **Driver-reported passenger counts** - The number of passengers on the trip.
 
 More information about the dataset can be found here:
 1. Website link: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 2. Data Dictionary: https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf
-
 
 
 ## Data Model
