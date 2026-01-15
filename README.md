@@ -65,13 +65,13 @@ The data model for this project follows the star schema model utilising dimensio
 **Data Ingestion and Storage**
 ![Google Cloud Storage](<img width="1574" height="619" alt="image" src="https://github.com/user-attachments/assets/f2448f30-d1fe-4be8-96ad-8f0bc57e5b38" />)
 
-![Google Cloud Storage](<img width="1573" height="618" alt="Screenshot 2026-01-15 122752" src="https://github.com/user-attachments/assets/968193b4-5809-4ec0-8bdb-8ec15a3f2c06" />)
+
+The data is first stored in Google Cloud Storage
 
 
-The data is first stored in Google Cloud Storage 
-
-**ETL Process**
-
+**Data Processing in Mage**
+In Mage, the workflow is written into individual blocks which separates the ETL logic clearly. 
+1. The first stage is to **extract** the data from GCS by providing the url which returns 
 
 
 1. **Data Ingestion and Storage**
@@ -81,3 +81,5 @@ The data is first stored in Google Cloud Storage
    - The Mage data pipeline tool runs the ETL scripts extracting the data from GCS, performing transformations, and load it into 
 
 4. Transformation
+
+
