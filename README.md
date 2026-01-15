@@ -54,8 +54,16 @@ More information about the dataset can be found here:
 ## Data Model
 ![Data Model](https://github.com/gc222/Uber-Data-Analytics/blob/main/data_model.jpeg)
 
+The data model for this project follows the star schema model utilising dimension and fact tables concepts. This is well-suited as it is designed for analytic workloads and optimised for faster querying performance in BigQuery. 
+
+**Dimension tables**
+- The qualitative data attributes e.g., pick-up / drop-off locations, payment method, rate codes, etc. are clearly separated into its own table that provides context to the fact tables.
+
+**Fact tables**
+- The fact table captures the key business metrics and also contains the foreign keys from the dimension table for clear relationships definitions
 
 
+**ETL Process**
 
 1. **Data Ingestion and Storage**
    - The trip records data is stored in Google Cloud Storage serving as the staging area for the raw unprocessed data. 
