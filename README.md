@@ -62,31 +62,34 @@ The data model for this project follows a star schema, utilising fact and dimens
 - The fact table captures the key business metrics (e.g., fares, tax, etc.) which contains the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
 
 ## 1. Data Ingestion and Storage
-![Google Cloud Storage](<img width="1574" height="619" alt="image" src="https://github.com/user-attachments/assets/f2448f30-d1fe-4be8-96ad-8f0bc57e5b38" />)
-
+![GCS](https://private-user-images.githubusercontent.com/60386435/537668206-66804bd9-ab49-4a8b-aa2a-c2c10fdeb878.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDAwOTQsIm5iZiI6MTc2ODgzOTc5NCwicGF0aCI6Ii82MDM4NjQzNS81Mzc2NjgyMDYtNjY4MDRiZDktYWI0OS00YThiLWFhMmEtYzJjMTBmZGViODc4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2MjMxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZlNzk4YzQyMmU5MzNlYWU3ZjczNjcxMDI4ZjhjYTA4YmMxNWE1ZjQ4NzY0NmJlYmJkOTg0NDYyZWY2NGQzMDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.KaDCKt2D0ZYGJnXuj6vkh1aNz2d5XmBCIjGLJ9-YqL8)
 
 The raw unprocessed data is first ingested and stored into Google Cloud Storage acting as the central repository for the pipeline. This is done by creating a globally accessible public bucket, allowing it to be retrieved via API from our ETL scripts. This setup provides scalable and flexible storage for large volumes of data and preserves the raw dataset for reprocessing and downstream transformations.
 
 
 ## 2. Data Processing in Mage
+![Mage](https://private-user-images.githubusercontent.com/60386435/537680331-83ee310c-6c8a-4cd6-b022-0b6fa5f20cda.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDEyOTYsIm5iZiI6MTc2ODg0MDk5NiwicGF0aCI6Ii82MDM4NjQzNS81Mzc2ODAzMzEtODNlZTMxMGMtNmM4YS00Y2Q2LWIwMjItMGI2ZmE1ZjIwY2RhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2NDMxNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY1YzRhNzU0NDUwNjhjYjBmNDE2NmE5MjUzMjdkM2E4OTI3MjU3YjZhYmUwMjE1ZjE0NDE3YmRmOWZmMjZjMjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8ypZvqRJAi4t6h4KZRXd3kbH22CooRRnE3ZmbAa_-8U)
+
 In Mage, the end-to-end workflow is implemented into individual blocks which separates the processing logic sequentially. Each block encapsulates a specific stage of the process, making the pipeline easier to understand, maintain, and extend.
 1. The first block **loads** the raw data from the GCS bucket using the API URL. Pandas is utilised as a powerful data science library to package it into a dataframe for easier data manipulation and inspection.
 2. The second block cleans and **transforms** the data and structures it align with the star schema data model, preparing it for analysis and optimised for faster querying performance.
 3. The final block **ingests** the processed data into BigQuery, where tables are created and populated. 
 
 ## Visualisation
-To visualise the data analysis, the data is loaded into Looker Studio by creating a live connection with BigQuery. The goal is to create an interactive Management Information / Operational dashboard thus it was designed to bring KPIs and business centric values to the forefront. The dashboard had two pages focused on:
+The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / Operational dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
 
 **Revenue Overview**
+This page provides a high-level view of revenue performance and key financial metrics.
 - KPIs: Total Revenue, Avg. Fare Amount, Revenue per Mile
-- Revenue Breakdown by Hour of Day (column chart)
-- Revenue by Vendor ID (column chart)
-- Revenue by Payment Method (pie/donut chart)
-- Total Revenue by Rate Code (bar chart)
-- Avg. Fare Amount by Rate Code (bar chart)
-- Table view at trip record level
+- Revenue Breakdown by Hour of Day (Column Chart)
+- Revenue by Vendor ID (Column Chart)
+- Revenue by Payment Method (Pie/Donut Chart)
+- Total Revenue by Rate Code (Bar Chart)
+- Avg. Fare Amount by Rate Code (Bar Chart)
+- Trip-level detail table for granular analysis
 
 **Trip Analysis**
+This page focuses on operational performances and trip-level behaviour.
 - KPIs: Total Trips, Avg. Trip Distance (mi), Avg. Duration, Total Passengers
 - Total Trips Completed over Time (Line Chart)
 - Avg. Trip Duration by Rate Code (Bar Chart)
