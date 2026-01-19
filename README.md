@@ -3,8 +3,7 @@
 ## Introduction
 The project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip
 records, perform transformations and data modelling, and surface business and operational insights via visualisations. The project leverages a
-modern data engineering stack including GCP services and tools, demonstrating core data engineering concepts including ingestion, transformation, modelling, 
-and analytics delivery.
+modern data engineering stack including GCP services and tools, demonstrating core data engineering concepts including ingestion, transformation, modelling, and analytics delivery.
 
 ## Data Pipeline Architecture 
 ![Data Pipeline Architecture](https://github.com/gc222/Uber-Data-Analytics/blob/main/architecture.jpg)
@@ -13,8 +12,8 @@ and analytics delivery.
    - The trip records data is stored in Google Cloud Storage serving as the staging area for the raw unprocessed data. 
 
 2. **Data Processing**
-   - Mage is used to create and execute the ETL scripts for processing the data. 
-   - Google Compute Engine is used to create and manage a virtual machine to host Mage.
+   - To process the data, a data pipeline tool called Mage is used to create and execute the ETL scripts where it will be ready for performing analysis.
+   - Google Compute Engine provides scalable and high-performance virtual machines to create and host Mage without needing physical hardware.
 
 3. **Data Warehouse and Analytics**
    - Google BigQuery is a data warehouse platform to store the processed the data and perform queries and analysis. 
@@ -28,7 +27,7 @@ and analytics delivery.
 
 **Google Cloud Platform (GCP) components:**
 1. **Cloud Storage (GCS)** - A scalable, efficient, and secure cloud storage serving as the data lake.
-2. **Compute Engine (GCE)** - An IaaS that provides the ability to create and run virtual machine instances for various workloads.
+2. **Compute Engine (GCE)** - An IaaS that provides the ability to create and run virtual machine instances for various workloads using custom configurations.
 3. **BigQuery (GBQ)** - A data warehouse platform for managing and executing queries with the dataset.
 4. **Looker Studio** - A business intelligence tool that has direct integration to its own Google products to create visualisations and dashboards.
 
@@ -66,22 +65,37 @@ The data model for this project follows a star schema, utilising fact and dimens
 ![Google Cloud Storage](<img width="1574" height="619" alt="image" src="https://github.com/user-attachments/assets/f2448f30-d1fe-4be8-96ad-8f0bc57e5b38" />)
 
 
-The raw unprocessed data is first ingested and stored into Google Cloud Storage acting as the central repository. This provides flexibility and scalability for large volumes of data
+The raw unprocessed data is first ingested and stored into Google Cloud Storage acting as the central repository for the pipeline. This is done by creating a globally accessible public bucket, allowing it to be retrieved via API from our ETL scripts. This setup provides scalable and flexible storage for large volumes of data and preserves the raw dataset for reprocessing and downstream transformations.
 
-Google Cloud Storage acts as the central repository that stores the raw unprocessed data in its native format. The 
 
 ## 2. Data Processing in Mage
-In Mage, the workflow is programmed into individual blocks which separates the processing logic sequentially. 
-1. The first stage is to **load** the data from GCS by providing the url for it to retrieve data. Pandas is utilised here as a powerful data science library to package it into a dataframe for easier data manipulation.
-2. The second stage cleans and transforms the data according to the star schema data model for the analytics.
+In Mage, the end-to-end workflow is implemented into individual blocks which separates the processing logic sequentially. Each block encapsulates a specific stage of the process, making the pipeline easier to understand, maintain, and extend.
+1. The first block **loads** the raw data from the GCS bucket using the API URL. Pandas is utilised as a powerful data science library to package it into a dataframe for easier data manipulation and inspection.
+2. The second block cleans and **transforms** the data and structures it align with the star schema data model, preparing it for analysis and optimised for faster querying performance.
+3. The final block **ingests** the processed data into BigQuery, where tables are created and populated. 
+
+## Visualisation
+To visualise the data analysis, the data is loaded into Looker Studio by creating a live connection with BigQuery. The goal is to create an interactive Management Information / Operational dashboard thus it was designed to bring KPIs and business centric values to the forefront. The dashboard had two pages focused on:
+
+**Revenue Overview**
+- KPIs: Total Revenue, Avg. Fare Amount, Revenue per Mile
+- Revenue Breakdown by Hour of Day (column chart)
+- Revenue by Vendor ID (column chart)
+- Revenue by Payment Method (pie/donut chart)
+- Total Revenue by Rate Code (bar chart)
+- Avg. Fare Amount by Rate Code (bar chart)
+- Table view at trip record level
+
+**Trip Analysis**
+- KPIs: Total Trips, Avg. Trip Distance (mi), Avg. Duration, Total Passengers
+- Total Trips Completed over Time (Line Chart)
+- Avg. Trip Duration by Rate Code (Bar Chart)
+- Trips by Vendor ID (Column Chart)
+- No. of Trips by Rate Code (Bar Chart)
+- Passenger Count Breakdown (Bar Chart)
+- Pickup Location by Rate Code (Bubble Map)
 
 
-1. **Data Ingestion and Storage**
-   - The trip records data is stored in Google Cloud Storage serving as the staging area for the raw unprocessed data. 
 
-2. **Data Processing**
-   - The Mage data pipeline tool runs the ETL scripts extracting the data from GCS, performing transformations, and load it into 
-
-4. Transformation
 
 
