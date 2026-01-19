@@ -54,24 +54,26 @@ More information about the dataset can be found here:
 ## Data Model
 ![Data Model](https://github.com/gc222/Uber-Data-Analytics/blob/main/data_model.jpeg)
 
-The data model for this project follows the star schema model utilising dimension and fact tables concepts. This is well-suited as it is designed for analytic workloads and optimised for faster querying performance in BigQuery. 
+The data model for this project follows a star schema, utilising fact and dimension tables. This design is well-suited for analytic workloads as it simplifies querying and is optimised for faster querying performance in BigQuery. 
 
 **Dimension tables**
-- The qualitative data attributes e.g., pick-up / drop-off locations, payment method, rate codes, etc. are clearly separated into its own table that provides context to the fact tables.
+- Qualitative and descriptive attributes (e.g., payment method, rate codes, etc.) are stored in seprate dimension tables. These provides contextual information for analysis whilst reducing data redundancy and improving maintainability.
 
 **Fact tables**
-- The fact table captures the key business metrics and also contains the foreign keys from the dimension table for clear relationships definitions
+- The fact table captures the key business metrics (e.g., fares, tax, etc.) which contains the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
 
-**Data Ingestion and Storage**
+## 1. Data Ingestion and Storage
 ![Google Cloud Storage](<img width="1574" height="619" alt="image" src="https://github.com/user-attachments/assets/f2448f30-d1fe-4be8-96ad-8f0bc57e5b38" />)
 
 
-The data is first stored in Google Cloud Storage
+The raw unprocessed data is first ingested and stored into Google Cloud Storage acting as the central repository. This provides flexibility and scalability for large volumes of data
 
+Google Cloud Storage acts as the central repository that stores the raw unprocessed data in its native format. The 
 
-**Data Processing in Mage**
-In Mage, the workflow is written into individual blocks which separates the ETL logic clearly. 
-1. The first stage is to **extract** the data from GCS by providing the url which returns 
+## 2. Data Processing in Mage
+In Mage, the workflow is programmed into individual blocks which separates the processing logic sequentially. 
+1. The first stage is to **load** the data from GCS by providing the url for it to retrieve data. Pandas is utilised here as a powerful data science library to package it into a dataframe for easier data manipulation.
+2. The second stage cleans and transforms the data according to the star schema data model for the analytics.
 
 
 1. **Data Ingestion and Storage**
