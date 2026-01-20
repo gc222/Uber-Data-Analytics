@@ -1,9 +1,7 @@
 # Uber Data Analytics | Data Engineering GCP Project
 
 ## Introduction
-The project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip
-records, perform transformations and data modelling, and surface business and operational insights via visualisations. The project leverages a
-modern data engineering stack including GCP services and tools, demonstrating core data engineering concepts including ingestion, transformation, modelling, and analytics delivery.
+This project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip records, perform transformations and data modelling, and surface business and operational insights via visualisations. The project leverages a modern data engineering stack including GCP services and tools, demonstrating core data engineering concepts including ingestion, transformation, modelling, and analytics delivery.
 
 ## Data Pipeline Architecture 
 ![Data Pipeline Architecture](https://github.com/gc222/Uber-Data-Analytics/blob/main/architecture.jpg)
@@ -38,8 +36,8 @@ modern data engineering stack including GCP services and tools, demonstrating co
 
 ## Dataset
 The dataset used in this project is sourced from TLC Trip Record Data Yellow and Green taxi records which includes key fields capturing 
-- **Pick-up and drop-off dates/times - The data and time of the pick-up and drop-off.
-- **Pick-up and drop-off locations - The latitude and longitude coordinates of the pick-up and drop-off locations.
+- **Pick-up and drop-off dates/times** - The data and time of the pick-up and drop-off.
+- **Pick-up and drop-off locations** - The latitude and longitude coordinates of the pick-up and drop-off locations.
 - **Trip distances** - The total elapsed distance of the trip.
 - **Itemized fares** - A breakdown of the fares which includes base fare, tax, tips, etc.
 - **Rate types** - The final rate code in effect at the end of the trip.
