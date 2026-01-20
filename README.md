@@ -79,7 +79,7 @@ In Mage, the end-to-end workflow is implemented into individual blocks which sep
 
 ![Uber Dashboard Trip Analysis](https://private-user-images.githubusercontent.com/60386435/537684910-10db0c79-d296-4cc9-95df-2d8d7e7fe15b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDIxMTMsIm5iZiI6MTc2ODg0MTgxMywicGF0aCI6Ii82MDM4NjQzNS81Mzc2ODQ5MTAtMTBkYjBjNzktZDI5Ni00Y2M5LTk1ZGYtMmQ4ZDdlN2ZlMTViLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2NTY1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwODJhZDgwYmQ2NGI0ZjU4MDA0MWE5ZjE5YmMzMDgwZDI1NTZjMDU0ZjI1YzVjMGYyZjk0NjZmMDBhZDZlM2MmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Y6w9wMD4Rraq2hS1ael9j717NPW2xfJWTke6V7NGPH8)
 
-The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / al dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
+The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / Operational dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
 
 **Revenue Overview**
 This page provides a high-level view of revenue performance and key financial metrics.
