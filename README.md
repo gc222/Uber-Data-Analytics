@@ -58,7 +58,7 @@ The data model for this project follows a star schema, utilising fact and dimens
 - Qualitative and descriptive attributes (e.g., payment method, rate codes, etc.) are stored in separate dimension tables. These provide contextual information for analysis whilst reducing data redundancy and improving maintainability.
 
 **Fact tables**
-- The fact table captures the key business metrics (e.g., fares, tax, etc.) and contain the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
+- The fact table captures the key business metrics (e.g., fares, tax, etc.) and contains the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
 
 ## 1. Data Ingestion and Storage
 ![GCS](https://private-user-images.githubusercontent.com/60386435/537668206-66804bd9-ab49-4a8b-aa2a-c2c10fdeb878.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDAwOTQsIm5iZiI6MTc2ODgzOTc5NCwicGF0aCI6Ii82MDM4NjQzNS81Mzc2NjgyMDYtNjY4MDRiZDktYWI0OS00YThiLWFhMmEtYzJjMTBmZGViODc4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2MjMxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZlNzk4YzQyMmU5MzNlYWU3ZjczNjcxMDI4ZjhjYTA4YmMxNWE1ZjQ4NzY0NmJlYmJkOTg0NDYyZWY2NGQzMDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.KaDCKt2D0ZYGJnXuj6vkh1aNz2d5XmBCIjGLJ9-YqL8)
