@@ -1,23 +1,23 @@
 # Uber Data Analytics | Data Engineering GCP Project
 
 ## Introduction
-This project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip records, performing transformations and data modelling, and surface business and operational insights via interactive visualisations. The project focuses on applying core data engineering principles across the data lifecycle, including cloud-based ingestion, data processing, dimensional modelling, and analytics delivery, using a modern stack of Google Cloud Platform (GCP) services and tools.
+This project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip records, perform transformations and data modelling, and surface business and operational insights via interactive visualisations. The project focuses on applying core data engineering principles across the data lifecycle, including cloud-based ingestion, data processing, dimensional modelling, and analytics delivery, using a modern stack of Google Cloud Platform (GCP) services and tools.
 
 ## Data Pipeline Architecture 
 ![Data Pipeline Architecture](https://github.com/gc222/Uber-Data-Analytics/blob/main/architecture.jpg)
 
 1. **Data Ingestion and Storage**
-   - Raw trip records data is ingested and stored into Google Cloud Storage which serves as the staging area for unprocessed data. 
+   - Raw trip record data is ingested and stored into Google Cloud Storage which serves as the staging area for unprocessed data. 
 
 2. **Data Processing**
-   - Mage is used as the data orchestration and processing tool implement and execute the ETL workflows. 
+   - Mage is used as the data orchestration and processing tool to implement and execute the ETL workflows. 
    - The Mage environment is hosted on Google Compute Engine (GCE), providing scalable and high-performance virtual machines to run the pipelines without requiring on-premise infrastructure.
 
 3. **Data Warehouse and Analytics**
-   - Google BigQuery is a data warehouse platform to store the processed the data. BigQuery enables fast, scalable SQL-based querying and supports analytical workloads across large datasets.
+   - Google BigQuery is a data warehouse platform to store the processed data. BigQuery enables fast, scalable SQL-based querying and supports analytical workloads across large datasets.
 
 4. **Data Visualisation**
-   - The final component is Looker Studio to build an interactive Management Information (MI) / Operational dashboard, enabling up-to-date reportin and the delivery of actionable business insights to stakeholders.
+   - The final component is Looker Studio to build an interactive Management Information (MI) / Operational dashboard, enabling up-to-date reporting and the delivery of actionable business insights to stakeholders.
 
 
 ## Technology Stack
@@ -27,19 +27,19 @@ This project showcases an end-to-end data engineering and analytics pipeline bui
 **Google Cloud Platform (GCP) components:**
 1. **Cloud Storage (GCS)** - A scalable, efficient, and secure cloud storage serving as the data lake.
 2. **Compute Engine (GCE)** - An IaaS that provides the ability to create and run virtual machine instances for various workloads using custom configurations.
-3. **BigQuery (GBQ)** - A data warehouse platform for managing and executing queries with the dataset.
-4. **Looker Studio** - A business intelligence tool that has direct integration to its own Google products to create visualisations and dashboards.
+3. **BigQuery (BQ)** - A data warehouse platform for managing and executing queries with the dataset.
+4. **Looker Studio** - A business intelligence tool with native integration to Google products for creating visualisations and dashboards.
 
 **Data Pipeline Tool** 
 - **Mage** - An ETL orchestration and transformation tool to create and manage data workflows.
 
 
 ## Dataset
-The dataset used in this project is sourced from TLC Trip Record Data Yellow and Green taxi records which includes key fields capturing 
-- **Pick-up and drop-off dates/times** - The data and time of the pick-up and drop-off.
+The dataset used in this project is sourced from TLC Trip Record Data Yellow and Green taxi records which include key fields capturing 
+- **Pick-up and drop-off dates/times** - The date and time of the pick-up and drop-off.
 - **Pick-up and drop-off locations** - The latitude and longitude coordinates of the pick-up and drop-off locations.
 - **Trip distances** - The total elapsed distance of the trip.
-- **Itemized fares** - A breakdown of the fares which includes base fare, tax, tips, etc.
+- **Itemized fares** - A breakdown of the fares which include base fare, tax, tips, etc.
 - **Rate types** - The final rate code in effect at the end of the trip.
 - **Payment types** - The payment method used for the transaction of the trip.
 - **Driver-reported passenger counts** - The number of passengers on the trip.
@@ -55,10 +55,10 @@ More information about the dataset can be found here:
 The data model for this project follows a star schema, utilising fact and dimension tables. This design is well-suited for analytic workloads as it simplifies querying and is optimised for faster querying performance in BigQuery. 
 
 **Dimension tables**
-- Qualitative and descriptive attributes (e.g., payment method, rate codes, etc.) are stored in seprate dimension tables. These provides contextual information for analysis whilst reducing data redundancy and improving maintainability.
+- Qualitative and descriptive attributes (e.g., payment method, rate codes, etc.) are stored in separate dimension tables. These provide contextual information for analysis whilst reducing data redundancy and improving maintainability.
 
 **Fact tables**
-- The fact table captures the key business metrics (e.g., fares, tax, etc.) which contains the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
+- The fact table captures the key business metrics (e.g., fares, tax, etc.) and contain the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
 
 ## 1. Data Ingestion and Storage
 ![GCS](https://private-user-images.githubusercontent.com/60386435/537668206-66804bd9-ab49-4a8b-aa2a-c2c10fdeb878.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDAwOTQsIm5iZiI6MTc2ODgzOTc5NCwicGF0aCI6Ii82MDM4NjQzNS81Mzc2NjgyMDYtNjY4MDRiZDktYWI0OS00YThiLWFhMmEtYzJjMTBmZGViODc4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2MjMxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZlNzk4YzQyMmU5MzNlYWU3ZjczNjcxMDI4ZjhjYTA4YmMxNWE1ZjQ4NzY0NmJlYmJkOTg0NDYyZWY2NGQzMDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.KaDCKt2D0ZYGJnXuj6vkh1aNz2d5XmBCIjGLJ9-YqL8)
