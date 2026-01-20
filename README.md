@@ -81,7 +81,7 @@ In Mage, the end-to-end workflow is implemented into individual blocks which sep
 
 The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / Operational dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
 
-**Revenue Overview**
+**Revenue Overview**\
 This page provides a high-level view of revenue performance and key financial metrics.
 - KPIs: Total Revenue, Avg. Fare Amount, Revenue per Mile
 - Revenue Breakdown by Hour of Day (Column Chart)
@@ -91,8 +91,8 @@ This page provides a high-level view of revenue performance and key financial me
 - Avg. Fare Amount by Rate Code (Bar Chart)
 - Trip-level detail table for granular analysis
 
-**Trip Analysis**
-This page focuses on al performances and trip-level behaviour.
+**Trip Analysis**\
+This page focuses on operational performances and trip-level behaviour.
 - KPIs: Total Trips, Avg. Trip Distance (mi), Avg. Duration, Total Passengers
 - Total Trips Completed over Time (Line Chart)
 - Avg. Trip Duration by Rate Code (Bar Chart)
