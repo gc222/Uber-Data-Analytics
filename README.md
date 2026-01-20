@@ -1,23 +1,23 @@
 # Uber Data Analytics | Data Engineering GCP Project
 
 ## Introduction
-This project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip records, perform transformations and data modelling, and surface business and operational insights via visualisations. The project leverages a modern data engineering stack including GCP services and tools, demonstrating core data engineering concepts including ingestion, transformation, modelling, and analytics delivery.
+This project showcases an end-to-end data engineering and analytics pipeline built using Uber trip data. The goal is to ingest raw trip records, performing transformations and data modelling, and surface business and operational insights via interactive visualisations. The project focuses on applying core data engineering principles across the data lifecycle, including cloud-based ingestion, data processing, dimensional modelling, and analytics delivery, using a modern stack of Google Cloud Platform (GCP) services and tools.
 
 ## Data Pipeline Architecture 
 ![Data Pipeline Architecture](https://github.com/gc222/Uber-Data-Analytics/blob/main/architecture.jpg)
 
 1. **Data Ingestion and Storage**
-   - The trip records data is stored in Google Cloud Storage serving as the staging area for the raw unprocessed data. 
+   - Raw trip records data is ingested and stored into Google Cloud Storage which serves as the staging area for unprocessed data. 
 
 2. **Data Processing**
-   - To process the data, a data pipeline tool called Mage is used to create and execute the ETL scripts where it will be ready for performing analysis.
-   - Google Compute Engine provides scalable and high-performance virtual machines to create and host Mage without needing physical hardware.
+   - Mage is used as the data orchestration and processing tool implement and execute the ETL workflows. 
+   - The Mage environment is hosted on Google Compute Engine (GCE), providing scalable and high-performance virtual machines to run the pipelines without requiring on-premise infrastructure.
 
 3. **Data Warehouse and Analytics**
-   - Google BigQuery is a data warehouse platform to store the processed the data and perform queries and analysis. 
+   - Google BigQuery is a data warehouse platform to store the processed the data. BigQuery enables fast, scalable SQL-based querying and supports analytical workloads across large datasets.
 
 4. **Data Visualisation**
-   - The final component is Looker Studio for developing an interactive MI / Operations dashboard that delivers business-value insights to stakeholders.
+   - The final component is Looker Studio to build an interactive Management Information (MI) / Operational dashboard, enabling up-to-date reportin and the delivery of actionable business insights to stakeholders.
 
 
 ## Technology Stack
@@ -79,7 +79,7 @@ In Mage, the end-to-end workflow is implemented into individual blocks which sep
 
 ![Uber Dashboard Trip Analysis](https://private-user-images.githubusercontent.com/60386435/537684910-10db0c79-d296-4cc9-95df-2d8d7e7fe15b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDIxMTMsIm5iZiI6MTc2ODg0MTgxMywicGF0aCI6Ii82MDM4NjQzNS81Mzc2ODQ5MTAtMTBkYjBjNzktZDI5Ni00Y2M5LTk1ZGYtMmQ4ZDdlN2ZlMTViLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2NTY1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwODJhZDgwYmQ2NGI0ZjU4MDA0MWE5ZjE5YmMzMDgwZDI1NTZjMDU0ZjI1YzVjMGYyZjk0NjZmMDBhZDZlM2MmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Y6w9wMD4Rraq2hS1ael9j717NPW2xfJWTke6V7NGPH8)
 
-The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / Operational dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
+The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / al dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
 
 **Revenue Overview**
 This page provides a high-level view of revenue performance and key financial metrics.
@@ -92,7 +92,7 @@ This page provides a high-level view of revenue performance and key financial me
 - Trip-level detail table for granular analysis
 
 **Trip Analysis**
-This page focuses on operational performances and trip-level behaviour.
+This page focuses on al performances and trip-level behaviour.
 - KPIs: Total Trips, Avg. Trip Distance (mi), Avg. Duration, Total Passengers
 - Total Trips Completed over Time (Line Chart)
 - Avg. Trip Duration by Rate Code (Bar Chart)
@@ -102,7 +102,9 @@ This page focuses on operational performances and trip-level behaviour.
 - Pickup Location by Rate Code (Bubble Map)
 
 ## Conclusion
-This project demonstrated the design and implementation of an end-to-end data analytics pipeline using modern data tools. Raw data is ingested
+This project demonstrated the design and implementation of an end-to-end data analytics pipeline using modern data tools. Raw data is ingested and stored in Google Cloud Storage, processed and orchestrated using Mage, and loaded into BigQuery for scalable analytical quering. The final insights are delivered through an interactive Looker Studio dashboard connected directly to the data warehouse.
+
+The architecture follows data engineering best practices, including separation of storage and compute, preservation of raw data for reprocessing, and optimisation of the warehouse for analytical workloads. By structuring the data into fact and dimension tables, the solution enables efficient querying, clear business logic, and flexible reporting.
 
 
 
