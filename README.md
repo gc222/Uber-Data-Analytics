@@ -103,7 +103,8 @@ This page focuses on operational performances and trip-level behaviour.
 - Passenger Count Breakdown (Bar Chart)
 - Pickup Location by Rate Code (Bubble Map)
 
-
+## Conclusion
+This project demonstrated the design and implementation of an end-to-end data analytics pipeline using modern data tools. Raw data is ingested
 
 
 
