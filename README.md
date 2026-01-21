@@ -61,7 +61,10 @@ The data model for this project follows a star schema, utilising fact and dimens
 - The fact table captures the key business metrics (e.g., fares, tax, etc.) and contains the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
 
 ## 1. Data Ingestion and Storage
-![GCS](https://private-user-images.githubusercontent.com/60386435/537668206-66804bd9-ab49-4a8b-aa2a-c2c10fdeb878.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDAwOTQsIm5iZiI6MTc2ODgzOTc5NCwicGF0aCI6Ii82MDM4NjQzNS81Mzc2NjgyMDYtNjY4MDRiZDktYWI0OS00YThiLWFhMmEtYzJjMTBmZGViODc4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2MjMxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZlNzk4YzQyMmU5MzNlYWU3ZjczNjcxMDI4ZjhjYTA4YmMxNWE1ZjQ4NzY0NmJlYmJkOTg0NDYyZWY2NGQzMDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.KaDCKt2D0ZYGJnXuj6vkh1aNz2d5XmBCIjGLJ9-YqL8)
+
+
+<img width="1573" height="618" alt="GCS 2026-01-15 122752" src="https://github.com/user-attachments/assets/cbac011b-61ad-4b43-9cb8-76090e4f1cff" />
+
 
 The raw unprocessed data is first ingested and stored into Google Cloud Storage acting as the central repository for the pipeline. This is done by creating a globally accessible public bucket, allowing it to be retrieved via API from our ETL scripts. This setup provides scalable and flexible storage for large volumes of data and preserves the raw dataset for reprocessing and downstream transformations.
 
