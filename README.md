@@ -61,8 +61,6 @@ The data model for this project follows a star schema, utilising fact and dimens
 - The fact table captures the key business metrics (e.g., fares, tax, etc.) and contains the foreign keys that reference the dimension table, enabling clear relationships and efficient joins for analytical queries.
 
 ## 1. Data Ingestion and Storage
-
-
 <img width="1573" height="618" alt="GCS 2026-01-15 122752" src="https://github.com/user-attachments/assets/cbac011b-61ad-4b43-9cb8-76090e4f1cff" />
 
 
@@ -70,7 +68,7 @@ The raw unprocessed data is first ingested and stored into Google Cloud Storage 
 
 
 ## 2. Data Processing in Mage
-![Mage](https://private-user-images.githubusercontent.com/60386435/537689443-49bb0c95-7de1-4f44-b7e4-61eefaebf973.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDI3ODQsIm5iZiI6MTc2ODg0MjQ4NCwicGF0aCI6Ii82MDM4NjQzNS81Mzc2ODk0NDMtNDliYjBjOTUtN2RlMS00ZjQ0LWI3ZTQtNjFlZWZhZWJmOTczLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE3MDgwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWMxMjJlNzFhYjcwN2VhYWYzMTc2ZmEyMmQ2YjcxMmFjMzYzMjlkZWJkNTlkZjA5MDIwYjQzNTg0MTc4NDliODcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.5vrhZeRO9nQ13PBwZDT8-a_p5SKKWIeE8aWxNNN08FY)
+<img width="2131" height="1046" alt="Mage" src="https://github.com/user-attachments/assets/1af220e0-895e-4ac1-b29f-94e6c40a1661" />
 
 In Mage, the end-to-end workflow is implemented into individual blocks which separates the processing logic sequentially. Each block encapsulates a specific stage of the process, making the pipeline easier to understand, maintain, and extend.
 1. The first block **loads** the raw data from the GCS bucket using the API URL. Pandas is utilised as a powerful data science library to package it into a dataframe for easier data manipulation and inspection.
@@ -78,9 +76,10 @@ In Mage, the end-to-end workflow is implemented into individual blocks which sep
 3. The final block **ingests** the processed data into BigQuery, where tables are created and populated. 
 
 ## Visualisation
-![Uber Dashboard Revenue Overview](https://private-user-images.githubusercontent.com/60386435/537684814-71f95779-3983-40eb-8294-f9be8a5a2e4b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDIzMjAsIm5iZiI6MTc2ODg0MjAyMCwicGF0aCI6Ii82MDM4NjQzNS81Mzc2ODQ4MTQtNzFmOTU3NzktMzk4My00MGViLTgyOTQtZjliZThhNWEyZTRiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE3MDAyMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWUxYjU3MzY5YzkwNTYwNTVmMWM1MzQwZDJjYjU4ZTM5ZjQ2M2VlZmFmYzQyZDA4MDUyYTRmOThlYzMxMmViZjgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.5jhuaSyCPQjPeI4rTl4riwGNlwINudReXhsEZbBfRHI)
+<img width="1502" height="1128" alt="Uber Dashboard Revenue Overview" src="https://github.com/user-attachments/assets/1c7ae767-47f4-455c-9c50-3bd9312cc943" />
 
-![Uber Dashboard Trip Analysis](https://private-user-images.githubusercontent.com/60386435/537684910-10db0c79-d296-4cc9-95df-2d8d7e7fe15b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njg4NDIxMTMsIm5iZiI6MTc2ODg0MTgxMywicGF0aCI6Ii82MDM4NjQzNS81Mzc2ODQ5MTAtMTBkYjBjNzktZDI5Ni00Y2M5LTk1ZGYtMmQ4ZDdlN2ZlMTViLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTE5VDE2NTY1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwODJhZDgwYmQ2NGI0ZjU4MDA0MWE5ZjE5YmMzMDgwZDI1NTZjMDU0ZjI1YzVjMGYyZjk0NjZmMDBhZDZlM2MmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Y6w9wMD4Rraq2hS1ael9j717NPW2xfJWTke6V7NGPH8)
+<img width="1502" height="1126" alt="Uber Dashboard Trip Analysis" src="https://github.com/user-attachments/assets/097ace38-d12f-4bdb-9dcb-107abdf04454" />
+
 
 The processed data is loaded into Looker Studio by creating a live connection with Google's BigQuery. The goal is to create an interactive Management Information (MI) / Operational dashboard, designed to surface KPIs and business critical insights for decision-making. The dashboard is organised into two focused pages with controls to filter on the data:
 
